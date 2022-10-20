@@ -1,6 +1,7 @@
-.idea/target
-     /.idea
-     .*iml
-     /allure-report
-     /allure-results
-     /logsпше
+/target
+/.idea
+.*iml
+/allure-report
+/allure-results
+/logs
+/build
