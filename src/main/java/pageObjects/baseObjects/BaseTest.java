@@ -14,6 +14,7 @@ import java.util.Properties;
 import static driver.DriverManager.closeWebDriver;
 import static driver.DriverManagerFactory.getManager;
 import static propertyHelper.PropertyReader.getProperties;
+
 @Listeners({Listener.class, ExtentReportListener.class})
 @Log4j
 public abstract class BaseTest {
@@ -21,9 +22,10 @@ public abstract class BaseTest {
 
     @BeforeTest
     public void setUp() {
-        log.debug("I'm started new wed driver!");
+        log.debug("I'm started new web driver!");
         properties = getProperties();
-        getManager(DriverManagerType.valueOf(properties.getProperty("browser").toUpperCase()));
+        System.out.println(properties.containsKey("browser"));
+        getManager(DriverManagerType.valueOf(properties.containsKey("browser") ? properties.getProperty("browser").toUpperCase() : "CHROME"));
     }
 
     protected <T> T get(Class<T> page) {
